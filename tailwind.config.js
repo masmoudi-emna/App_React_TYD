@@ -23,15 +23,43 @@ module.exports = {
       ...colors,
     },
     extend: {
+      // Ajoutez ces extensions pour le backdrop blur
+      backdropBlur: {
+        '2xl': '40px',
+        '3xl': '64px',
+        '4xl': '80px',
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+        'blur-lg': 'blur(40px)',
+      },
+      // Extension pour les ombres plus prononcées
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        '4xl': '0 45px 80px -25px rgba(0, 0, 0, 0.4)',
+      },
+      // Extension pour les flous personnalisés
+      blur: {
+        '2xl': '40px',
+        '3xl': '64px',
+      },
+      // Extension pour les opacités supplémentaires
+      opacity: {
+        '15': '0.15',
+        '35': '0.35',
+        '65': '0.65',
+        '85': '0.85',
+        '90': '0.90',
+        '95': '0.95',
+      },
       minHeight: {
         "screen-75": "75vh",
       },
       fontSize: {
         55: "55rem",
       },
-      opacity: {
-        80: ".8",
-      },
+      
       zIndex: {
         2: 2,
         3: 3,

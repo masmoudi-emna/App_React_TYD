@@ -65,6 +65,40 @@ export default function Index() {
         />
       </section>
 
+<section className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen1">
+  
+      {/* Image de fond avec overlay */}
+      <div className="absolute top-0 w-full h-full bg-center bg-cover"
+           style={{
+             backgroundImage: `url(${require("assets/img/predire.jpg").default})`,
+           }}>
+        {/* Overlay avec opacité */}
+        <span className="absolute top-0 w-full h-full bg-blueGray-800 opacity-50"></span>
+      </div>
+       {/* Contenu du cercle */}
+      <div className="relative text-center px-6 z-10">
+        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight drop-shadow-lg">
+          Prédire ton
+        </h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-lg">
+          Diabète
+        </h1>
+        
+        {/* Ligne décorative */}
+        <div className="w-16 h-1 bg-white/80 mx-auto my-3 rounded-full"></div>
+        
+        {/* Bouton simple */}
+        <button className="bg-white text-green-700 hover:bg-green-50 font-bold py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-sm mt-2">
+          Voir plus
+        </button>
+      </div>
+  
+      
+      
+    </section>
+
+
+
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"

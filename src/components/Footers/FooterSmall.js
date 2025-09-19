@@ -14,52 +14,67 @@ export default function FooterSmall(props) {
           <hr className="mb-6 border-b-1 border-blueGray-600" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4">
-              <div className="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
+              <div className="text-sm text-blueGray-400 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nr-footer-small"
+                  href="/"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  DiabetaCare
                 </a>
+                . Tous droits réservés.
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">
-              <ul className="flex flex-wrap list-none md:justify-end  justify-center">
+              <ul className="flex flex-wrap list-none md:justify-end justify-center">
                 <li>
                   <a
-                    href="https://www.creative-tim.com?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
+                    href="/contact"
+                    className="text-white hover:text-blue-300 text-sm font-semibold block py-1 px-3 transition duration-300"
                   >
-                    Creative Tim
+                    <i className="fas fa-phone-alt mr-1 text-xs"></i>
+                    Contact Urgent
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
+                    href="/privacy"
+                    className="text-white hover:text-blue-300 text-sm font-semibold block py-1 px-3 transition duration-300"
                   >
-                    About Us
+                    <i className="fas fa-shield-alt mr-1 text-xs"></i>
+                    Confidentialité
                   </a>
                 </li>
                 <li>
                   <a
-                    href="http://blog.creative-tim.com?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
+                    href="/help"
+                    className="text-white hover:text-blue-300 text-sm font-semibold block py-1 px-3 transition duration-300"
                   >
-                    Blog
+                    <i className="fas fa-question-circle mr-1 text-xs"></i>
+                    Aide
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://github.com/creativetimofficial/notus-react/blob/main/LICENSE.md?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
+                    href="/emergency"
+                    className="text-red-300 hover:text-red-200 text-sm font-semibold block py-1 px-3 transition duration-300"
                   >
-                    MIT License
+                    <i className="fas fa-exclamation-triangle mr-1 text-xs"></i>
+                    Urgence Diabétique
                   </a>
                 </li>
               </ul>
             </div>
+          </div>
+          
+          {/* Ligne supplémentaire avec informations médicales */}
+          <div className="text-center mt-4">
+            <p className="text-xs text-blueGray-500">
+              ⚕️ Service de diabétologie - Consultations sur rendez-vous
+            </p>
+            <p className="text-xs text-blueGray-500 mt-1">
+              📞 Urgences: 15 (SAMU) | 🕒 Réponse sous 24h
+            </p>
           </div>
         </div>
       </footer>
