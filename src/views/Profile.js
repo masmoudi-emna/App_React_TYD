@@ -1,19 +1,19 @@
 import React from "react";
-
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
-export default function Profile() {
+export default function PatientDashboard() {
   return (
     <>
       <Navbar transparent />
       <main className="profile-page">
-        <section className="relative block h-500-px">
+        <section className="relative block" style={{ height: "300px" }}>
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')",
+              backgroundImage: `url(${
+                require("assets/img/profil2.jpg").default
+              })`,
             }}
           >
             <span
@@ -22,8 +22,8 @@ export default function Profile() {
             ></span>
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-            style={{ transform: "translateZ(0)" }}
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+            style={{ height: "70px", transform: "translateZ(0)" }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -41,95 +41,171 @@ export default function Profile() {
             </svg>
           </div>
         </section>
+
         <section className="relative py-16 bg-blueGray-200">
           <div className="container mx-auto px-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-48">
               <div className="px-6">
                 <div className="flex flex-wrap justify-center">
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
                       <img
-                        alt="..."
+                        alt="Profil patient"
                         src={require("assets/img/team-2-800x800.jpg").default}
-                        className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                        className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+                        style={{ width: "150px", height: "150px" }}
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-                    <div className="py-6 px-3 mt-32 sm:mt-0">
-                      <button
-                        className="bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                      >
-                        Connect
-                      </button>
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-4/12 px-4 lg:order-1">
-                    <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          22
-                        </span>
-                        <span className="text-sm text-blueGray-400">
-                          Friends
-                        </span>
-                      </div>
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          10
-                        </span>
-                        <span className="text-sm text-blueGray-400">
-                          Photos
-                        </span>
-                      </div>
-                      <div className="lg:mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          89
-                        </span>
-                        <span className="text-sm text-blueGray-400">
-                          Comments
-                        </span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <div className="text-center mt-12">
+
+                <div className="text-center mt-20">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                    Jenna Stones
+                    Marie Dupont
                   </h3>
-                  <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
-                    Los Angeles, California
-                  </div>
-                  <div className="mb-2 text-blueGray-600 mt-10">
-                    <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                    Solution Manager - Creative Tim Officer
+                  <div className="text-sm leading-normal mt-0 mb-2 text-blue-600 font-bold uppercase">
+                    <i className="fas fa-heartbeat mr-2 text-lg text-blue-600"></i>{" "}
+                    Patient Diabétique Type 2
                   </div>
                   <div className="mb-2 text-blueGray-600">
-                    <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                    University of Computer Science
+                    <i className="fas fa-user-md mr-2 text-lg text-blueGray-400"></i>
+                    Dr. Martin - Diabétologue
+                  </div>
+                  <div className="mb-2 text-blueGray-600">
+                    <i className="fas fa-calendar-alt mr-2 text-lg text-blueGray-400"></i>
+                    Prochain RDV: 15/12/2024
                   </div>
                 </div>
-                <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
-                  <div className="flex flex-wrap justify-center">
-                    <div className="w-full lg:w-9/12 px-4">
-                      <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                        An artist of considerable range, Jenna the name taken by
-                        Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                        performs and records all of his own music, giving it a
-                        warm, intimate feel with a solid groove structure. An
-                        artist of considerable range.
-                      </p>
-                      <a
-                        href="#pablo"
-                        className="font-normal text-lightBlue-500"
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        Show more
-                      </a>
+
+                {/* Indicateurs de santé */}
+                <div className="flex justify-center py-8">
+                  <div className="flex flex-wrap justify-center gap-6">
+                    <div className="p-4 text-center">
+                      <span className="text-2xl font-bold block text-blue-600">
+                        6.2%
+                      </span>
+                      <span className="text-sm text-blueGray-400">HbA1c</span>
+                    </div>
+                    <div className="p-4 text-center">
+                      <span className="text-2xl font-bold block text-green-600">
+                        125
+                      </span>
+                      <span className="text-sm text-blueGray-400">
+                        Glycémie
+                      </span>
+                    </div>
+                    <div className="p-4 text-center">
+                      <span className="text-2xl font-bold block text-purple-600">
+                        24.8
+                      </span>
+                      <span className="text-sm text-blueGray-400">IMC</span>
                     </div>
                   </div>
+                </div>
+
+                {/* Section des fonctionnalités patient - DÉBUT */}
+                <div className="mt-8 py-8 border-t border-blueGray-200">
+                  <h2 className="text-3xl font-bold text-center text-blueGray-700 mb-8">
+                    Mes Fonctionnalités
+                  </h2>
+
+                  <div className="flex flex-wrap justify-center gap-6 mb-8">
+                    {/* 3. Calcul IMC */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-purple-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                        <i className="fas fa-vial text-blue-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Mes Analyses
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Consultez vos derniers résultats glycémiques
+                        </p>
+                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Voir Analyses
+                        </button>
+                      </div>
+                    </div>
+                    {/* 5. Message docteur */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-red-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
+                        <i className="fas fa-calendar-check text-green-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Rendez-vous
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Prendre un nouveau rendez-vous en ligne
+                        </p>
+                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Prendre RDV
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 3. Calcul IMC */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-purple-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                        <i className="fas fa-weight-scale text-purple-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Calcul IMC
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Calculez votre indice de masse corporelle
+                        </p>
+                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Calculer IMC
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 4. Feedback */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-orange-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-orange-100">
+                        <i className="fas fa-comment-medical text-orange-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Feedback
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Donnez votre avis sur votre traitement
+                        </p>
+                        <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Donner Feedback
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 5. Message docteur */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-red-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
+                        <i className="fas fa-envelope text-red-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Message Docteur
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Envoyer un message à votre médecin
+                        </p>
+                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Contacter
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 6. Suivi quotidien */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
+                      <div className="bg-teal-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-teal-100">
+                        <i className="fas fa-chart-line text-teal-500 text-3xl mb-4"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                          Suivi Quotidien
+                        </h4>
+                        <p className="text-sm text-blueGray-600 mb-4">
+                          Saisir vos mesures glycémiques quotidiennes
+                        </p>
+                        <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                          Saisir Mesures
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Section des fonctionnalités patient - FIN */}
                 </div>
               </div>
             </div>
