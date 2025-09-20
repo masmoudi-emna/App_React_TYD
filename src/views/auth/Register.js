@@ -19,41 +19,16 @@ export default function Register() {
               
               <div className="rounded-t mb-0 px-6 py-6 relative z-10">
                 <div className="text-center mb-3">
-                  <h6 className="text-white text-sm font-bold drop-shadow-md">
-                    Créer un compte avec
-                  </h6>
+                  <h2 className="text-white  font-bold drop-shadow-md">
+                    Créer un compte 
+                  </h2>
                 </div>
-                <div className="btn-wrapper text-center">
-                  <button
-                    className="bg-white/15 hover:bg-white/25 text-white font-normal px-4 py-2 rounded-xl outline-none focus:outline-none mr-2 mb-1 uppercase shadow-lg hover:shadow-xl inline-flex items-center font-bold text-xs ease-linear transition-all duration-150 border border-white/30 backdrop-blur-sm"
-                    type="button"
-                  >
-                    <img
-                      alt="GitHub"
-                      className="w-5 mr-1"
-                      src={require("assets/img/github.svg").default}
-                    />
-                    GitHub
-                  </button>
-                  <button
-                    className="bg-white/15 hover:bg-white/25 text-white font-normal px-4 py-2 rounded-xl outline-none focus:outline-none mr-1 mb-1 uppercase shadow-lg hover:shadow-xl inline-flex items-center font-bold text-xs ease-linear transition-all duration-150 border border-white/30 backdrop-blur-sm"
-                    type="button"
-                  >
-                    <img
-                      alt="Google"
-                      className="w-5 mr-1"
-                      src={require("assets/img/google.svg").default}
-                    />
-                    Google
-                  </button>
-                </div>
+                
                 <hr className="mt-6 border-b-1 border-white/40" />
               </div>
               
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0 relative z-10">
-                <div className="text-white/90 text-center mb-3 font-bold drop-shadow-md">
-                  <small>Ou créer un compte avec email</small>
-                </div>
+                
                 <form>
                   <div className="relative w-full mb-4">
                     <label
