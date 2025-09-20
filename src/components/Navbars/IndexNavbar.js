@@ -80,20 +80,24 @@ export default function Navbar(props) {
               {/* Boutons d'action */}
               <li className="flex items-center">
                 <Link
-                  to="/login"
+                  to="/auth/login"
                   className="text-blue-600 hover:text-blue-800 px-3 py-4 lg:py-2 flex items-center text-sm font-semibold transition duration-300"
                 >
                   <i className="fas fa-sign-in-alt mr-2"></i>
                   Connexion
                 </Link>
               </li>
-              
               <li className="flex items-center">
-                
-                  <i className="fas fa-user-plus mr-2"></i> 
+                <Link
+                  to="/auth/register"
+                  className="text-blue-600 hover:text-blue-800 px-3 py-4 lg:py-2 flex items-center text-sm font-semibold transition duration-300"
+                >
+                  <i className="fas fa-user-plus mr-2"></i>
                   Inscription
-                
+                </Link>
               </li>
+              
+              
 
               
             </ul>
