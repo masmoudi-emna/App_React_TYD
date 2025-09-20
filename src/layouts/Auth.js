@@ -22,7 +22,7 @@ export default function Auth() {
             className="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"
             style={{
               backgroundImage:
-                "url(" + require("assets/img/fond2.jpg").default + ")",
+                "url(" + require("assets/img/fond7.jpg").default + ")",
             }}
           ></div>
           <Switch>
