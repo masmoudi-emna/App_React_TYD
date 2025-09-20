@@ -65,6 +65,41 @@ export default function Index() {
         />
       </section>
 
+<section className="relative -mb-24 z-20 ">
+  <div className="container mx-auto px-4">
+    <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8 md:p-10 transform hover:-translate-y-1 transition-all duration-300">
+      <div className="relative text-center px-6 z-10">
+        
+        <h1 className="text-3xl md:text-4xl font-extrabold text-black leading-tight drop-shadow-lg">
+          <i class="fas fa-search-plus text-blue-400 text-2xl"></i> 
+          Predire ton Diabète
+        </h1>
+        
+        {/* Ligne décorative */}
+        <div className="w-20 h-1 bg-white/80 mx-auto my-4 rounded-full"></div>
+        
+       
+        <button className="bg-black text-white hover:bg-green-50  py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
+          Maintenant tu peux savoir votre risque de diabète avec notre outil de prédiction avancé...
+
+        </button>
+        
+        {/* Bouton moderne avec effet de profondeur */}
+        <button className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm md:text-base group relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+        </button>
+        
+      </div>
+      
+      {/* Élément décoratif */}
+      <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
+      <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/5 rounded-full"></div>
+      
+    </div>
+  </div>
+  
+</section>
+
 <section className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen1">
   
       {/* Image de fond avec overlay */}
@@ -73,29 +108,27 @@ export default function Index() {
              backgroundImage: `url(${require("assets/img/predire.jpg").default})`,
            }}>
         {/* Overlay avec opacité */}
+        
         <span className="absolute top-0 w-full h-full bg-blueGray-800 opacity-50"></span>
       </div>
        {/* Contenu du cercle */}
       <div className="relative text-center px-6 z-10">
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight drop-shadow-lg">
-          Prédire ton
-        </h1>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-white leading-tight drop-shadow-lg">
-          Diabète
-        </h1>
+        
         
         {/* Ligne décorative */}
         <div className="w-16 h-1 bg-white/80 mx-auto my-3 rounded-full"></div>
         
         {/* Bouton simple */}
-        <button className="bg-white text-green-700 hover:bg-green-50 font-bold py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-sm mt-2">
-          Voir plus
+        <button className="bg-white text-green-700 hover:bg-green-50 font-bold py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
+          <i class="fas fa-brain text-indigo-500 text-2xl"></i>
+          Explorer les fonctionnalités et commencer l'analyse! 
         </button>
       </div>
   
       
       
     </section>
+
 
 
 
