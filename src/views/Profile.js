@@ -108,18 +108,14 @@ export default function PatientDashboard() {
                   </h2>
 
                   <div className="flex flex-wrap justify-center gap-8 mb-10">
-                
-
-
-                    
-                    {/* 3. mes analyses */}
+                    {/* 1. Mes Analyses */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100 h-full flex flex-col">
                         <i className="fas fa-vial text-blue-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                          Mes Analyses
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                            Consultez vos derniers résultats glycémiques
                         </p>
                         <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
@@ -130,12 +126,12 @@ export default function PatientDashboard() {
 
                     {/* 2. Rendez-vous */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-green-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-green-100">
+                      <div className="bg-green-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-green-100 h-full flex flex-col">
                         <i className="fas fa-calendar-check text-green-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Rendez-vous
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                           Prendre un nouveau rendez-vous en ligne
                         </p>
                         <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
@@ -144,20 +140,14 @@ export default function PatientDashboard() {
                       </div>
                     </div>
 
-                  
-                 
-
-
-
-
                     {/* 3. Calcul IMC */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100 h-full flex flex-col">
                         <i className="fas fa-weight-scale text-purple-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Calcul IMC
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                           Calculez votre indice de masse corporelle
                         </p>
                         <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
@@ -168,12 +158,12 @@ export default function PatientDashboard() {
 
                     {/* 4. Feedback */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-orange-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-orange-100">
+                      <div className="bg-orange-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-orange-100 h-full flex flex-col">
                         <i className="fas fa-comment-medical text-orange-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Feedback
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                           Donnez votre avis sur votre traitement
                         </p>
                         <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
@@ -184,12 +174,12 @@ export default function PatientDashboard() {
 
                     {/* 5. Message Docteur */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-red-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
+                      <div className="bg-red-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100 h-full flex flex-col">
                         <i className="fas fa-envelope text-red-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Message Docteur
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                           Envoyer un message à votre médecin
                         </p>
                         <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
@@ -200,12 +190,12 @@ export default function PatientDashboard() {
 
                     {/* 6. Suivi Quotidien */}
                     <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
-                      <div className="bg-teal-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-teal-100">
+                      <div className="bg-teal-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-teal-100 h-full flex flex-col">
                         <i className="fas fa-chart-line text-teal-500 text-3xl mb-6"></i>
                         <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Suivi Quotidien
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed flex-grow">
                           Saisir vos mesures glycémiques quotidiennes
                         </p>
                         <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
