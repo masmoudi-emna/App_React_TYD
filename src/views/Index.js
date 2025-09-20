@@ -11,61 +11,56 @@ export default function Index() {
     <>
       <IndexNavbar fixed />
       
-      <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
-        <div className="container mx-auto items-center flex flex-wrap">
-          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div className="pt-32 sm:pt-0">
-              <h2 className="font-semibold text-4xl text-blueGray-600">
-                Votre santé, notre priorité!
-                <br></br>
-                <hr></hr>
-                Medecin Diabétologue spécialisé
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                Prenez le contrôle de votre diabète avec un accompagnement
-                personnalisé{" "}
-              </p>
-              <div className="mt-12">
-                <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index"
-                  target="_blank"
-                  className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                >
-                  📅 Prendre rendez-vous en ligne
-                </a>
-                <a
-                  href="https://github.com/creativetimofficial/notus-react?ref=nr-index"
-                  className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                  target="_blank"
-                >
-                  🚨 Urgences diabétiques
-                </a>
-              </div>
-            </div>
-          </div>
+     <section className="header relative flex items-center justify-center min-h-screen max-h-860-px overflow-hidden">
+  <div className="container mx-auto px-4 flex flex-wrap items-center justify-center">
+    <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4 order-2 md:order-1 flex flex-col justify-center">
+      <div className="text-center md:text-left pt-10 md:pt-0">
+        <h2 className="font-semibold text-3xl sm:text-4xl text-blueGray-600">
+          Votre santé, notre priorité!
+          <span className="block w-20 h-1 bg-lightBlue-500 my-4 mx-auto md:mx-0"></span>
+          <span className="block">Médecin Diabétologue spécialisé</span>
+        </h2>
+        <p className="mt-4 text-base sm:text-lg leading-relaxed text-blueGray-500 max-w-md mx-auto md:mx-0">
+          Prenez le contrôle de votre diabète avec un accompagnement personnalisé
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+          <a
+            href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="get-started text-white font-bold px-5 py-3 rounded-xl border-2 border-lightBlue-600 outline-none focus:outline-none bg-lightBlue-500 hover:bg-lightBlue-600 active:bg-lightBlue-700 uppercase text-sm shadow-md hover:shadow-lg transition-all duration-150 text-center"
+          >
+            📅 Prendre rendez-vous en ligne
+          </a>
+          <a
+            href="https://github.com/creativetimofficial/notus-react?ref=nr-index"
+            className="github-star text-white font-bold px-5 py-3 rounded-xl border-2 border-blueGray-800 outline-none focus:outline-none bg-blueGray-700 hover:bg-blueGray-800 active:bg-blueGray-900 uppercase text-sm shadow-md hover:shadow-lg transition-all duration-150 text-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚨 Urgences diabétiques
+          </a>
         </div>
+      </div>
+    </div>
 
+    <div className="w-full md:w-4/12 lg:w-6/12 xl:w-6/12 px-4 order-1 md:order-2 flex items-center justify-center mb-6 md:mb-0">
+      <div className="relative flex justify-center">
         <img
-          className="absolute top-1 b-auto right-0 pt-16"
-          style={{
-            marginTop: "3px",
-            width: "700px",
-            height: "auto",
-            maxHeight: "650px",
-            borderRadius: "20px",
-            background: "transparent",
-            borderRadius: "25px",
-            padding: "6px",
-
-            borderRadius: "30px",
-            display: "inline-block",
-          }}
+          className="w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl rounded-2xl shadow-xl"
           src={require("assets/img/medecinfour.jpg").default}
           alt="Médecin diabétologue"
+          style={{
+            maxHeight: "500px",
+            objectFit: "cover"
+          }}
         />
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section className="relative -mb-24 z-20 ">
+<section className="relative -mb-24 z-20  ">
   <div className="container mx-auto px-4">
     <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8 md:p-10 transform hover:-translate-y-1 transition-all duration-300">
       <div className="relative text-center px-6 z-10">
@@ -100,6 +95,7 @@ export default function Index() {
   
 </section>
 
+
 <section className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen1">
   
       {/* Image de fond avec overlay */}
@@ -128,10 +124,6 @@ export default function Index() {
       
       
     </section>
-
-
-
-
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
