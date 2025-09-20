@@ -11,9 +11,7 @@ export default function PatientDashboard() {
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: `url(${
-                require("assets/img/profil2.jpg").default
-              })`,
+              backgroundImage: `url(${require("assets/img/profil2.jpg").default})`,
             }}
           >
             <span
@@ -45,9 +43,9 @@ export default function PatientDashboard() {
         <section className="relative py-16 bg-blueGray-200">
           <div className="container mx-auto px-4">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-48">
-              <div className="px-6">
+              <div className="px-8 py-8">
                 <div className="flex flex-wrap justify-center">
-                  <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                  <div className="w-full lg:w-3/12 px-6 lg:order-2 flex justify-center">
                     <div className="relative">
                       <img
                         alt="Profil patient"
@@ -59,19 +57,19 @@ export default function PatientDashboard() {
                   </div>
                 </div>
 
-                <div className="text-center mt-20">
-                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                <div className="text-center mt-24">
+                  <h3 className="text-4xl font-semibold leading-normal mb-4 text-blueGray-700">
                     Marie Dupont
                   </h3>
-                  <div className="text-sm leading-normal mt-0 mb-2 text-blue-600 font-bold uppercase">
+                  <div className="text-sm leading-normal mt-0 mb-4 text-blue-600 font-bold uppercase">
                     <i className="fas fa-heartbeat mr-2 text-lg text-blue-600"></i>{" "}
                     Patient Diabétique Type 2
                   </div>
-                  <div className="mb-2 text-blueGray-600">
+                  <div className="mb-3 text-blueGray-600">
                     <i className="fas fa-user-md mr-2 text-lg text-blueGray-400"></i>
                     Dr. Martin - Diabétologue
                   </div>
-                  <div className="mb-2 text-blueGray-600">
+                  <div className="mb-3 text-blueGray-600">
                     <i className="fas fa-calendar-alt mr-2 text-lg text-blueGray-400"></i>
                     Prochain RDV: 15/12/2024
                   </div>
@@ -79,14 +77,14 @@ export default function PatientDashboard() {
 
                 {/* Indicateurs de santé */}
                 <div className="flex justify-center py-8">
-                  <div className="flex flex-wrap justify-center gap-6">
-                    <div className="p-4 text-center">
+                  <div className="flex flex-wrap justify-center gap-8">
+                    <div className="p-6 text-center">
                       <span className="text-2xl font-bold block text-blue-600">
                         6.2%
                       </span>
                       <span className="text-sm text-blueGray-400">HbA1c</span>
                     </div>
-                    <div className="p-4 text-center">
+                    <div className="p-6 text-center">
                       <span className="text-2xl font-bold block text-green-600">
                         125
                       </span>
@@ -94,7 +92,7 @@ export default function PatientDashboard() {
                         Glycémie
                       </span>
                     </div>
-                    <div className="p-4 text-center">
+                    <div className="p-6 text-center">
                       <span className="text-2xl font-bold block text-purple-600">
                         24.8
                       </span>
@@ -104,102 +102,113 @@ export default function PatientDashboard() {
                 </div>
 
                 {/* Section des fonctionnalités patient - DÉBUT */}
-                <div className="mt-8 py-8 border-t border-blueGray-200">
-                  <h2 className="text-3xl font-bold text-center text-blueGray-700 mb-8">
+                <div className="mt-8 py-10 border-t border-blueGray-200">
+                  <h2 className="text-3xl font-bold text-center text-blueGray-700 mb-10 px-4">
                     Mes Fonctionnalités
                   </h2>
 
-                  <div className="flex flex-wrap justify-center gap-6 mb-8">
-                    {/* 3. Calcul IMC */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-purple-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
-                        <i className="fas fa-vial text-blue-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
-                          Mes Analyses
+                  <div className="flex flex-wrap justify-center gap-8 mb-10">
+                
+
+
+                    
+                    {/* 3. mes analyses */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                        <i className="fas fa-vial text-blue-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
+                         Mes Analyses
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
-                          Consultez vos derniers résultats glycémiques
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
+                           Consultez vos derniers résultats glycémiques
                         </p>
-                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Voir Analyses
                         </button>
                       </div>
                     </div>
-                    {/* 5. Message docteur */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-red-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
-                        <i className="fas fa-calendar-check text-green-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+
+                    {/* 2. Rendez-vous */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-green-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-green-100">
+                        <i className="fas fa-calendar-check text-green-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Rendez-vous
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
                           Prendre un nouveau rendez-vous en ligne
                         </p>
-                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Prendre RDV
                         </button>
                       </div>
                     </div>
 
+                  
+                 
+
+
+
+
                     {/* 3. Calcul IMC */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-purple-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
-                        <i className="fas fa-weight-scale text-purple-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-purple-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-purple-100">
+                        <i className="fas fa-weight-scale text-purple-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Calcul IMC
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
                           Calculez votre indice de masse corporelle
                         </p>
-                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Calculer IMC
                         </button>
                       </div>
                     </div>
 
                     {/* 4. Feedback */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-orange-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-orange-100">
-                        <i className="fas fa-comment-medical text-orange-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-orange-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-orange-100">
+                        <i className="fas fa-comment-medical text-orange-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Feedback
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
                           Donnez votre avis sur votre traitement
                         </p>
-                        <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Donner Feedback
                         </button>
                       </div>
                     </div>
 
-                    {/* 5. Message docteur */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-red-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
-                        <i className="fas fa-envelope text-red-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                    {/* 5. Message Docteur */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-red-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-red-100">
+                        <i className="fas fa-envelope text-red-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Message Docteur
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
                           Envoyer un message à votre médecin
                         </p>
-                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-red-500 hover:bg-red-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Contacter
                         </button>
                       </div>
                     </div>
 
-                    {/* 6. Suivi quotidien */}
-                    <div className="w-full md:w-5/12 lg:w-3/12 px-4 text-center">
-                      <div className="bg-teal-50 p-6 rounded-lg shadow hover:shadow-md transition duration-300 border border-teal-100">
-                        <i className="fas fa-chart-line text-teal-500 text-3xl mb-4"></i>
-                        <h4 className="text-lg font-semibold text-blueGray-700 mb-2">
+                    {/* 6. Suivi Quotidien */}
+                    <div className="w-full md:w-5/12 lg:w-3/12 px-6 text-center mb-8">
+                      <div className="bg-teal-50 p-8 rounded-lg shadow hover:shadow-md transition duration-300 border border-teal-100">
+                        <i className="fas fa-chart-line text-teal-500 text-3xl mb-6"></i>
+                        <h4 className="text-lg font-semibold text-blueGray-700 mb-4 px-2">
                           Suivi Quotidien
                         </h4>
-                        <p className="text-sm text-blueGray-600 mb-4">
+                        <p className="text-sm text-blueGray-600 mb-6 px-3 leading-relaxed">
                           Saisir vos mesures glycémiques quotidiennes
                         </p>
-                        <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-6 py-2 rounded-lg w-full transition duration-300 transform hover:scale-105">
+                        <button className="bg-teal-500 hover:bg-teal-600 text-white font-medium px-8 py-3 rounded-lg w-full transition duration-300 transform hover:scale-105">
                           Saisir Mesures
                         </button>
                       </div>
