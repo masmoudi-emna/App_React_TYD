@@ -13,21 +13,21 @@ export default function CardStats({
 }) {
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+      <div className="relative flex flex-col min-w-0 break-words bg-white rounded-lg mb-6 xl:mb-0 shadow-lg hover:shadow-xl transition-all duration-300">
         <div className="flex-auto p-4">
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap items-center">
             <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
-              <h5 className="text-blueGray-400 uppercase font-bold text-xs">
+              <h5 className="text-blueGray-500 uppercase font-bold text-xs tracking-wide">
                 {statSubtitle}
               </h5>
-              <span className="font-semibold text-xl text-blueGray-700">
+              <span className="font-bold text-2xl text-blueGray-800 block mt-1">
                 {statTitle}
               </span>
             </div>
             <div className="relative w-auto pl-4 flex-initial">
               <div
                 className={
-                  "text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full " +
+                  "text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full transition-transform duration-300 hover:scale-110 " +
                   statIconColor
                 }
               >
@@ -35,20 +35,22 @@ export default function CardStats({
               </div>
             </div>
           </div>
-          <p className="text-sm text-blueGray-400 mt-4">
-            <span className={statPercentColor + " mr-2"}>
+          <p className="text-sm text-blueGray-500 mt-4 pt-3 border-t border-blueGray-100">
+            <span className={statPercentColor + " font-semibold mr-2"}>
               <i
                 className={
                   statArrow === "up"
-                    ? "fas fa-arrow-up"
+                    ? "fas fa-arrow-up mr-1"
                     : statArrow === "down"
-                    ? "fas fa-arrow-down"
-                    : ""
+                    ? "fas fa-arrow-down mr-1"
+                    : "fas fa-minus mr-1"
                 }
-              ></i>{" "}
+              ></i>
               {statPercent}%
             </span>
-            <span className="whitespace-nowrap">{statDescripiron}</span>
+            <span className="whitespace-nowrap text-blueGray-400">
+              {statDescripiron}
+            </span>
           </p>
         </div>
       </div>
@@ -57,27 +59,23 @@ export default function CardStats({
 }
 
 CardStats.defaultProps = {
-  statSubtitle: "Traffic",
-  statTitle: "350,897",
+  statSubtitle: "Indicateur",
+  statTitle: "0",
   statArrow: "up",
-  statPercent: "3.48",
+  statPercent: "0",
   statPercentColor: "text-emerald-500",
-  statDescripiron: "Since last month",
-  statIconName: "far fa-chart-bar",
-  statIconColor: "bg-red-500",
+  statDescripiron: "Depuis le mois dernier", // Traduit en français
+  statIconName: "fas fa-chart-bar",
+  statIconColor: "bg-blue-500",
 };
 
 CardStats.propTypes = {
   statSubtitle: PropTypes.string,
-  statTitle: PropTypes.string,
-  statArrow: PropTypes.oneOf(["up", "down"]),
-  statPercent: PropTypes.string,
-  // can be any of the text color utilities
-  // from tailwindcss
+  statTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  statArrow: PropTypes.oneOf(["up", "down", ""]),
+  statPercent: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   statPercentColor: PropTypes.string,
   statDescripiron: PropTypes.string,
   statIconName: PropTypes.string,
-  // can be any of the background color utilities
-  // from tailwindcss
   statIconColor: PropTypes.string,
 };

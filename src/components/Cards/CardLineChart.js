@@ -6,124 +6,146 @@ export default function CardLineChart() {
     var config = {
       type: "line",
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
+        labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"],
         datasets: [
           {
-            label: new Date().getFullYear(),
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
-            fill: false,
+            label: "Consultations Programmées",
+            backgroundColor: "rgba(72, 187, 120, 0.1)",
+            borderColor: "#48bb78",
+            pointBackgroundColor: "#48bb78",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "#48bb78",
+            data: [45, 52, 48, 55, 60, 58, 65, 62, 70, 68, 75, 80],
+            fill: true,
+            tension: 0.4,
           },
           {
-            label: new Date().getFullYear() - 1,
-            fill: false,
-            backgroundColor: "#fff",
-            borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
+            label: "Consultations d'Urgence",
+            backgroundColor: "rgba(237, 100, 166, 0.1)",
+            borderColor: "#ed64a6",
+            pointBackgroundColor: "#ed64a6",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "#ed64a6",
+            data: [8, 10, 12, 9, 11, 15, 18, 14, 16, 13, 12, 10],
+            fill: true,
+            tension: 0.4,
           },
         ],
       },
       options: {
         maintainAspectRatio: false,
         responsive: true,
-        title: {
-          display: false,
-          text: "Sales Charts",
-          fontColor: "white",
-        },
-        legend: {
-          labels: {
-            fontColor: "white",
+        plugins: {
+          legend: {
+            labels: {
+              color: "#4a5568",
+              font: {
+                size: 12,
+              },
+            },
+            align: "end",
+            position: "top",
           },
-          align: "end",
-          position: "bottom",
+          tooltip: {
+            mode: "index",
+            intersect: false,
+            backgroundColor: "rgba(255, 255, 255, 0.95)",
+            titleColor: "#2d3748",
+            bodyColor: "#4a5568",
+            borderColor: "#e2e8f0",
+            borderWidth: 1,
+            callbacks: {
+              label: function(context) {
+                return `${context.dataset.label}: ${context.parsed.y} consultations`;
+              }
+            }
+          },
         },
-        tooltips: {
-          mode: "index",
+        interaction: {
+          mode: "nearest",
           intersect: false,
         },
-        hover: {
-          mode: "nearest",
-          intersect: true,
-        },
         scales: {
-          xAxes: [
-            {
-              ticks: {
-                fontColor: "rgba(255,255,255,.7)",
-              },
+          x: {
+            display: true,
+            title: {
               display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Month",
-                fontColor: "white",
-              },
-              gridLines: {
-                display: false,
-                borderDash: [2],
-                borderDashOffset: [2],
-                color: "rgba(33, 37, 41, 0.3)",
-                zeroLineColor: "rgba(0, 0, 0, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
+              text: "Mois",
+              color: "#4a5568",
             },
-          ],
-          yAxes: [
-            {
-              ticks: {
-                fontColor: "rgba(255,255,255,.7)",
-              },
+            grid: {
+              display: false,
+            },
+            ticks: {
+              color: "#718096",
+            },
+          },
+          y: {
+            type: "linear",
+            display: true,
+            position: "left",
+            title: {
               display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Value",
-                fontColor: "white",
-              },
-              gridLines: {
-                borderDash: [3],
-                borderDashOffset: [3],
-                drawBorder: false,
-                color: "rgba(255, 255, 255, 0.15)",
-                zeroLineColor: "rgba(33, 37, 41, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
+              text: "Nombre de Consultations",
+              color: "#4a5568",
             },
-          ],
+            grid: {
+              borderDash: [3],
+              color: "rgba(226, 232, 240, 0.8)",
+            },
+            ticks: {
+              color: "#718096",
+              stepSize: 20,
+            },
+            beginAtZero: true,
+          },
         },
       },
     };
+    
     var ctx = document.getElementById("line-chart").getContext("2d");
-    window.myLine = new Chart(ctx, config);
+    
+    // Détruire le graphique existant avant d'en créer un nouveau
+    if (window.lineChartInstance) {
+      window.lineChartInstance.destroy();
+    }
+    
+    window.lineChartInstance = new Chart(ctx, config);
+    
+    // Nettoyage
+    return () => {
+      if (window.lineChartInstance) {
+        window.lineChartInstance.destroy();
+      }
+    };
   }, []);
+
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border border-gray-100">
         <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
-              <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
-                Overview
+              <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
+                Évolution sur 12 mois
               </h6>
-              <h2 className="text-white text-xl font-semibold">Sales value</h2>
+              <h2 className="text-blueGray-800 text-xl font-semibold">
+                Évolution des Consultations par Mois
+              </h2>
             </div>
           </div>
         </div>
         <div className="p-4 flex-auto">
-          {/* Chart */}
-          <div className="relative h-350-px">
+          <div className="relative h-80">
             <canvas id="line-chart"></canvas>
           </div>
+        </div>
+        <div className="px-4 py-3 bg-gray-50 rounded-b-lg border-t border-gray-100">
+          <p className="text-xs text-blueGray-500">
+            📈 Augmentation de 78% des consultations programmées sur l'année
+          </p>
         </div>
       </div>
     </>
