@@ -3,24 +3,22 @@ import React from "react";
 // components
 import CardLineChart from "components/Cards/CardLineChart.js";
 import CardBarChart from "components/Cards/CardBarChart.js";
+import CardBarChart2 from "components/Cards/CardBarChart2.js";
 import CardPageVisits from "components/Cards/CardPageVisits.js";
-import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
-import CardStats from "components/Cards/CardStats.js";
+import CarsPageVisits2 from "components/Cards/CarsPageVisits2.js";
+//import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
+//import CardStats from "components/Cards/CardStats.js";
 
 export default function Dashboard() {
   return (
     <>
-      
-      {/* Section 2: Graphiques principaux */}
+      {/* Section 1: Graphiques principaux */}
       <div className="flex flex-wrap mb-8">
         <div className="w-full xl:w-8/12 mb-6 xl:mb-0 px-4">
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border border-gray-100">
             <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full max-w-full flex-grow flex-1">
-                  <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
-                    Évolution mensuelle
-                  </h6>
                   <h2 className="text-blueGray-800 text-xl font-semibold">
                     Évolution des Consultations par Mois
                   </h2>
@@ -52,19 +50,19 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      {/* Section 2: Graphiques plus detaillés  */}
 
-      {/* Section 3: Données détaillées */}
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap mt-6">
         <div className="w-full xl:w-8/12 mb-6 xl:mb-0 px-4">
-          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border border-gray-100">
             <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full max-w-full flex-grow flex-1">
-                  <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
-                    Activité récente
+                  <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
+                    Démographie des patients
                   </h6>
-                  <h2 className="text-blueGray-700 text-xl font-semibold">
-                    Dernières Consultations
+                  <h2 className="text-blueGray-800 text-xl font-semibold">
+                    Distribution des Patients par Tranche d'Âge
                   </h2>
                 </div>
               </div>
@@ -74,22 +72,47 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
         <div className="w-full xl:w-4/12 px-4">
-          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border border-gray-100">
             <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full max-w-full flex-grow flex-1">
-                  <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
-                    Statistiques
+                  <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
+                     Indicateurs de santé
                   </h6>
-                  <h2 className="text-blueGray-700 text-xl font-semibold">
-                    Sources des Patients
+                  <h2 className="text-blueGray-800 text-xl font-semibold">
+                    Distribution de l'IMC chez les Patients Diabétiques Type 2
                   </h2>
                 </div>
               </div>
             </div>
             <div className="p-4 flex-auto">
-              <CardSocialTraffic />
+              <CardBarChart2 />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3: Distribution tension artérielle */}
+      <div className="flex flex-wrap mb-8">
+        <div className="w-full px-4">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border border-gray-100">
+            <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
+              <div className="flex flex-wrap items-center">
+                <div className="relative w-full max-w-full flex-grow flex-1">
+                  <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
+                    Paramètres cardiovasculaires
+                  </h6>
+                  <h2 className="text-blueGray-800 text-xl font-semibold">
+                    Distribution des Valeurs de Pression Artérielle (Type 1 vs
+                    Type 2)
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div className="p-4 flex-auto">
+              <CarsPageVisits2 />
             </div>
           </div>
         </div>

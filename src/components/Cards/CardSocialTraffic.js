@@ -1,152 +1,102 @@
 import React from "react";
-
-// components
+import Chart from "chart.js";
 
 export default function CardSocialTraffic() {
+  React.useEffect(() => {
+    const config = {
+      type: "line",
+      data: {
+        labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"],
+        datasets: [
+          {
+            label: "Patient A - Marie DUPONT",
+            backgroundColor: "rgba(66, 153, 225, 0.1)",
+            borderColor: "#4299e1",
+            pointBackgroundColor: "#4299e1",
+            data: [31.2, 30.5, 29.8, 29.1, 28.4, 27.9, 27.3, 26.8, 26.2, 25.8, 25.3, 24.9],
+            tension: 0.4,
+          },
+          {
+            label: "Patient B - Pierre MARTIN",
+            backgroundColor: "rgba(237, 100, 166, 0.1)",
+            borderColor: "#ed64a6",
+            pointBackgroundColor: "#ed64a6",
+            data: [29.8, 29.2, 28.7, 28.1, 27.6, 27.2, 26.8, 26.4, 26.0, 25.7, 25.4, 25.1],
+            tension: 0.4,
+          },
+          {
+            label: "Patient C - Sophie LEROY",
+            backgroundColor: "rgba(72, 187, 120, 0.1)",
+            borderColor: "#48bb78",
+            pointBackgroundColor: "#48bb78",
+            data: [28.5, 28.0, 27.6, 27.2, 26.8, 26.5, 26.2, 25.9, 25.6, 25.4, 25.2, 25.0],
+            tension: 0.4,
+          },
+          {
+            label: "Objectif IMC Santé",
+            borderColor: "#a0aec0",
+            borderWidth: 2,
+            borderDash: [5, 5],
+            pointRadius: 0,
+            data: [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+            tension: 0,
+          }
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              color: "#4a5568",
+            },
+          },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+        scales: {
+          x: {
+            title: { display: true, text: "Mois de suivi" },
+          },
+          y: {
+            title: { display: true, text: "IMC (kg/m²)" },
+            min: 24,
+            max: 32,
+          },
+        },
+      },
+    };
+
+    const ctx = document.getElementById("bmi-trend-chart").getContext("2d");
+    if (window.bmiTrendChart) window.bmiTrendChart.destroy();
+    window.bmiTrendChart = new Chart(ctx, config);
+    
+    return () => {
+      if (window.bmiTrendChart) window.bmiTrendChart.destroy();
+    };
+  }, []);
+
   return (
-    <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-        <div className="rounded-t mb-0 px-4 py-3 border-0">
-          <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3 className="font-semibold text-base text-blueGray-700">
-                Social traffic
-              </h3>
-            </div>
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-              <button
-                className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                See all
-              </button>
-            </div>
+    <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg border border-gray-100">
+      <div className="rounded-t mb-0 px-4 py-3 border-0">
+        <div className="flex flex-wrap items-center">
+          <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 className="font-semibold text-base text-blueGray-700">
+              Comparaison de l'Évolution de l'IMC
+            </h3>
+            <p className="text-sm text-blueGray-500">Suivi de 3 patients sur 12 mois</p>
           </div>
         </div>
-        <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
-          <table className="items-center w-full bg-transparent border-collapse">
-            <thead className="thead-light">
-              <tr>
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Referral
-                </th>
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Visitors
-                </th>
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Facebook
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  1,480
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">60%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                        <div
-                          style={{ width: "60%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Facebook
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  5,480
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">70%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
-                        <div
-                          style={{ width: "70%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Google
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  4,807
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">80%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
-                        <div
-                          style={{ width: "80%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  Instagram
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  3,678
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">75%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-lightBlue-200">
-                        <div
-                          style={{ width: "75%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-lightBlue-500"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  twitter
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  2,645
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <span className="mr-2">30%</span>
-                    <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
-                        <div
-                          style={{ width: "30%" }}
-                          className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      </div>
+      <div className="p-4 flex-auto">
+        <div className="relative h-80">
+          <canvas id="bmi-trend-chart"></canvas>
         </div>
       </div>
-    </>
+    </div>
   );
 }

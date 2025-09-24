@@ -131,9 +131,7 @@ export default function CardLineChart() {
               <h6 className="uppercase text-blueGray-500 mb-1 text-xs font-semibold">
                 Évolution sur 12 mois
               </h6>
-              <h2 className="text-blueGray-800 text-xl font-semibold">
-                Évolution des Consultations par Mois
-              </h2>
+              
             </div>
           </div>
         </div>
