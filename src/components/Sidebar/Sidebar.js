@@ -158,7 +158,7 @@ export default function Sidebar() {
                       ? "text-blue-500"
                       : "text-blueGray-300")
                   }></i>
-                  Analyses
+                  Prediction du diabète 
                 </Link>
               </li>
 

@@ -99,7 +99,7 @@ export default function RendezVous() {
                 <div className="flex space-x-4">
                   <button
                     onClick={handleAddRendezVous}
-                    className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center"
+                    className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-black font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center"
                   >
                     <i className="fas fa-calendar-plus mr-2"></i>
                     Nouveau Rendez-vous
@@ -122,7 +122,7 @@ export default function RendezVous() {
                   <i className="fas fa-calendar-check text-green-600 text-xl"></i>
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Confirmés</p>
+                  <p className="text-sm font-medium text-black-600">Confirmés</p>
                   <p className="text-2xl font-bold text-gray-900">
                     {rendezVous.filter(rv => rv.statut === "Confirmé").length}
                   </p>

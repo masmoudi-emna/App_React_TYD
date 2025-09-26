@@ -133,7 +133,7 @@ export default function CardTableRendezVous({ color, searchTerm, rendezVous, onE
                       </button>
                       <button
                         onClick={() => onEditRendezVous(rv.id)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-lg transition-colors duration-200"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-black p-2 rounded-lg transition-colors duration-200"
                         title="Modifier"
                       >
                         <i className="fas fa-edit"></i>
