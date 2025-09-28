@@ -24,7 +24,7 @@ export default function Sidebar() {
           {/* Brand - Modifié pour DiabetaCare */}
           <Link
             className="md:block text-left md:pb-2 text-blue-600 mr-0 inline-block whitespace-nowrap text-lg uppercase font-bold p-4 px-0"
-            to="/admin/dashboard"
+            to="/"
           >
             <i className="fas fa-heartbeat mr-2"></i>
             DiabetaCare
@@ -99,7 +99,7 @@ export default function Sidebar() {
                         : "text-blueGray-300")
                     }
                   ></i>
-                  Tableau de Bord
+                  Tableau de Bord Médical
                 </Link>
               </li>
 
@@ -202,13 +202,13 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <Link
-                  className="text-blueGray-700 hover:text-blue-500 text-xs uppercase py-2 font-bold block"
-                  to="/admin/nouveau-patient"
+                <a
+                  href="/admin/ajouter-patient"
+                  className="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
                 >
-                  <i className="fas fa-user-plus text-blueGray-400 mr-2 text-sm"></i>
-                  Nouveau Patient
-                </Link>
+                  <i className="fas fa-user-plus mr-2 text-sm text-blueGray-400"></i>
+                  Ajouter Patient
+                </a>
               </li>
 
               <li className="items-center">
@@ -218,6 +218,17 @@ export default function Sidebar() {
                 >
                   <i className="fas fa-plus-circle text-blueGray-400 mr-2 text-sm"></i>
                   Nouveau RDV
+                </Link>
+              </li>
+              {/* Divider */}
+              <hr className="my-4 md:min-w-full" />
+              <li className="items-center">
+                <Link
+                  className="text-blueGray-700 hover:text-blue-500 text-xs uppercase py-2 font-bold block"
+                  to="/admin/diabetesdashboard"
+                >
+                  <i className="fas fa-chart-line text-blueGray-400 mr-2 text-sm"></i>
+                  Dashboard Diabète type 2
                 </Link>
               </li>
             </ul>

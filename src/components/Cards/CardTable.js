@@ -1,7 +1,13 @@
 import React from "react";
-import TableDropdown from "components/Dropdowns/TableDropdown.js";
 
-export default function CardTable({ color, searchTerm, patients, onDeletePatient }) {
+export default function CardTable({ 
+  color, 
+  searchTerm, 
+  patients, 
+  onDeletePatient, 
+  onViewDossier, // Ajoutez cette prop
+  onEditPatient  // Ajoutez cette prop
+}) {
   
   const filteredPatients = patients.filter(patient =>
     `${patient.nom} ${patient.prenom} ${patient.typeDiabete} ${patient.statut}`
@@ -109,26 +115,34 @@ export default function CardTable({ color, searchTerm, patients, onDeletePatient
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center space-x-2">
+                      {/* Bouton Voir Dossier */}
                       <button
-                        onClick={() => console.log("Voir dossier", patient.id)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg transition-colors duration-200"
-                        title="Voir dossier"
+                        onClick={() => onViewDossier(patient.id)}
+                        className="btn-dossier"
+                        title="Voir dossier patient"
                       >
-                        <i className="fas fa-eye"></i>
+                        <i className="fas fa-folder-open"></i>
+                        Dossier
                       </button>
+
+                      {/* Bouton Modifier */}
                       <button
-                        onClick={() => console.log("Modifier", patient.id)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-lg transition-colors duration-200"
-                        title="Modifier"
+                        onClick={() => onEditPatient(patient.id)}
+                        className="btn-modifier"
+                        title="Modifier patient"
                       >
                         <i className="fas fa-edit"></i>
+                        Modifier
                       </button>
+
+                      {/* Bouton Supprimer */}
                       <button
                         onClick={() => onDeletePatient(patient.id)}
-                        className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg transition-colors duration-200"
-                        title="Supprimer"
+                        className="btn-supprimer"
+                        title="Supprimer patient"
                       >
                         <i className="fas fa-trash"></i>
+                        Supprimer
                       </button>
                     </div>
                   </td>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom";
 import CardTableRendezVous from "components/Cards/CardTableRendezVous.js";
 
 export default function RendezVous() {
@@ -7,7 +7,7 @@ export default function RendezVous() {
   const [selectedWeek, setSelectedWeek] = useState(new Date());
   const [activeFilter, setActiveFilter] = useState("all");
   const history = useHistory();
-  
+
   const [rendezVous, setRendezVous] = useState([
     {
       id: 1,
@@ -19,7 +19,7 @@ export default function RendezVous() {
       duree: 30,
       type: "Consultation de suivi",
       statut: "Confirmé",
-      notes: "Contrôle HbA1c"
+      notes: "Contrôle HbA1c",
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ export default function RendezVous() {
       duree: 45,
       type: "Nouvelle consultation",
       statut: "Confirmé",
-      notes: "Éducation thérapeutique"
+      notes: "Éducation thérapeutique",
     },
     {
       id: 3,
@@ -43,31 +43,99 @@ export default function RendezVous() {
       duree: 30,
       type: "Urgence",
       statut: "En attente",
-      notes: "Problème d'ajustement insuline"
-    }
+      notes: "Problème d'ajustement insuline",
+    },
   ]);
 
-  // Filtrage des rendez-vous
-  const filteredRendezVous = rendezVous.filter(rv => {
-    const matchesSearch = searchTerm === "" || 
+  // Injection CSS directe
+  const styles = `
+    .rdv-container { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh; padding: 35px; }
+    .rdv-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .rdv-title h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #6366f1, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+    .rdv-title p { color: #64748b; margin: 5px 0 0 0; }
+    .btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 25px; }
+    .rdv-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #cbd5e1; transition: all 0.3s ease; }
+    .rdv-card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .stat-card { display: flex; align-items: center; padding: 16px; border-radius: 12px; border: 1px solid #cbd5e1; transition: all 0.3s ease; cursor: pointer; }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .stat-success { border-left: 4px solid #10b981; }
+    .stat-warning { border-left: 4px solid #f59e0b; }
+    .stat-danger { border-left: 4px solid #ef4444; }
+    .stat-info { border-left: 4px solid #3b82f6; }
+    .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 1.2rem; }
+    .stat-success .stat-icon { background: rgba(16,185,129,0.1); color: #10b981; }
+    .stat-warning .stat-icon { background: rgba(245,158,11,0.1); color: #f59e0b; }
+    .stat-danger .stat-icon { background: rgba(239,68,68,0.1); color: #ef4444; }
+    .stat-info .stat-icon { background: rgba(59,130,246,0.1); color: #3b82f6; }
+    .stat-value { font-size: 1.8rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .stat-label { font-size: 0.85rem; color: #64748b; margin: 0; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .calendar-controls { display: flex; gap: 8px; align-items: center; }
+    .calendar-btn { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px; cursor: pointer; transition: all 0.2s ease; color: #64748b; }
+    .calendar-btn:hover { background: #e2e8f0; }
+    .calendar-today { background: #6366f1; color: white; border: none; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+    .calendar-today:hover { background: #4f46e5; }
+    .week-calendar { display: flex; flex-direction: column; gap: 10px; }
+    .day-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; border: 1px solid #cbd5e1; background: #f8fafc; transition: all 0.3s ease; }
+    .day-current { border-color: #6366f1; background: rgba(99,102,241,0.05); }
+    .day-header { display: flex; align-items: center; gap: 12px; }
+    .day-number { width: 36px; height: 36px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #1e293b; }
+    .day-number-current { background: #6366f1; color: white; }
+    .day-name { font-weight: 600; color: #1e293b; font-size: 0.9rem; }
+    .day-count { font-size: 0.75rem; color: #64748b; }
+    .day-indicators { display: flex; align-items: center; gap: 4px; }
+    .indicator { width: 8px; height: 8px; border-radius: 50%; }
+    .indicator-confirmed { background: #10b981; }
+    .indicator-pending { background: #f59e0b; }
+    .indicator-urgent { background: #ef4444; }
+    .indicator-more { font-size: 0.7rem; color: #64748b; }
+    .filters-content { display: flex; gap: 15px; align-items: center; }
+    .search-container { position: relative; flex-grow: 1; }
+    .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #64748b; }
+    .search-input { width: 100%; padding: 12px 15px 12px 45px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 0.9rem; transition: all 0.3s ease; background: #f8fafc; }
+    .search-input:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+    .filter-buttons { display: flex; gap: 8px; }
+    .filter-btn { display: flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid #cbd5e1; border-radius: 10px; background: #f8fafc; color: #64748b; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+    .filter-btn:hover { background: #e2e8f0; }
+    .filter-btn-active { background: rgba(99,102,241,0.1); color: #6366f1; border-color: #6366f1; }
+    .btn-dossier { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 4px; margin-left: 8px; }
+    .btn-dossier:hover { transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .filters-content { flex-direction: column; align-items: stretch; }
+    }
+  `;
+
+  const filteredRendezVous = rendezVous.filter((rv) => {
+    const matchesSearch =
+      searchTerm === "" ||
       rv.patientNom.toLowerCase().includes(searchTerm.toLowerCase()) ||
       rv.patientPrenom.toLowerCase().includes(searchTerm.toLowerCase()) ||
       rv.type.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesFilter = activeFilter === "all" || 
+
+    const matchesFilter =
+      activeFilter === "all" ||
       (activeFilter === "confirmed" && rv.statut === "Confirmé") ||
       (activeFilter === "pending" && rv.statut === "En attente") ||
       (activeFilter === "urgent" && rv.type === "Urgence") ||
-      (activeFilter === "today" && rv.date === new Date().toISOString().split('T')[0]);
-    
+      (activeFilter === "today" &&
+        rv.date === new Date().toISOString().split("T")[0]);
+
     return matchesSearch && matchesFilter;
   });
 
   const stats = {
-    confirmed: rendezVous.filter(rv => rv.statut === "Confirmé").length,
-    pending: rendezVous.filter(rv => rv.statut === "En attente").length,
-    urgent: rendezVous.filter(rv => rv.type === "Urgence").length,
-    today: rendezVous.filter(rv => rv.date === new Date().toISOString().split('T')[0]).length
+    confirmed: rendezVous.filter((rv) => rv.statut === "Confirmé").length,
+    pending: rendezVous.filter((rv) => rv.statut === "En attente").length,
+    urgent: rendezVous.filter((rv) => rv.type === "Urgence").length,
+    today: rendezVous.filter(
+      (rv) => rv.date === new Date().toISOString().split("T")[0]
+    ).length,
   };
 
   const handleAddRendezVous = () => {
@@ -80,8 +148,12 @@ export default function RendezVous() {
 
   const handleDeleteRendezVous = (id) => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer ce rendez-vous ?")) {
-      setRendezVous(rendezVous.filter(rv => rv.id !== id));
+      setRendezVous(rendezVous.filter((rv) => rv.id !== id));
     }
+  };
+
+  const handleViewDossier = (patientId) => {
+    history.push(`/admin/VoirDossier/${patientId}`);
   };
 
   const getWeekDates = (date) => {
@@ -100,121 +172,162 @@ export default function RendezVous() {
 
   return (
     <>
-      {/* En-tête compact */}
-      <div className="mb-6 pt-6">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 mt-10">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">Gestion des Rendez-vous</h1>
+      <style>{styles}</style>
+      <div className="rdv-container">
+        {/* En-tête */}
+        <div className="rdv-header">
+          <div className="rdv-title">
+            <h1>Gestion des Rendez-vous</h1>
+            <p></p>
           </div>
-          
-          <button
-            onClick={handleAddRendezVous}
-            className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg flex items-center whitespace-nowrap"
-          >
-            <i className="fas fa-calendar-plus mr-2"></i>
+
+          <button onClick={handleAddRendezVous} className="btn-primary">
+            <i className="fas fa-calendar-plus"></i>
             Nouveau RDV
           </button>
         </div>
-      </div>
 
-      {/* Section combinée : Statistiques + Vue semaine */}
-      <div className="flex flex-wrap mb-6">
-        {/* Statistiques - Partie gauche */}
-        <div className="w-full lg:w-8/12 px-4 mb-6 lg:mb-0">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 h-full">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Aperçu de la semaine</h3>
-            <div className="grid grid-cols-2 gap-4">
+        {/* Dashboard Grid */}
+        <div className="dashboard-grid">
+          {/* Statistiques */}
+          <div className="rdv-card">
+            <h3 style={{ marginBottom: "20px", color: "#1e293b" }}>
+              Aperçu de la semaine
+            </h3>
+            <div className="stats-grid">
               {[
-                { key: "confirmed", label: "Rendez-vous confirmés", icon: "calendar-check", color: "green", value: stats.confirmed },
-                { key: "pending", label: "En attente de confirmation", icon: "clock", color: "yellow", value: stats.pending },
-                { key: "urgent", label: "Consultations urgentes", icon: "exclamation-triangle", color: "red", value: stats.urgent },
-                { key: "today", label: "RDV aujourd'hui", icon: "calendar-day", color: "blue", value: stats.today }
+                {
+                  key: "confirmed",
+                  label: "Rendez-vous confirmés",
+                  icon: "calendar-check",
+                  color: "success",
+                  value: stats.confirmed,
+                },
+                {
+                  key: "pending",
+                  label: "En attente de confirmation",
+                  icon: "clock",
+                  color: "warning",
+                  value: stats.pending,
+                },
+                {
+                  key: "urgent",
+                  label: "Consultations urgentes",
+                  icon: "exclamation-triangle",
+                  color: "danger",
+                  value: stats.urgent,
+                },
+                {
+                  key: "today",
+                  label: "RDV aujourd'hui",
+                  icon: "calendar-day",
+                  color: "info",
+                  value: stats.today,
+                },
               ].map((stat) => (
-                <div key={stat.key} className="flex items-center p-3 rounded-lg border border-gray-100 hover:border-gray-200 transition-colors duration-200">
-                  <div className={`rounded-full bg-${stat.color}-100 p-2 mr-3`}>
-                    <i className={`fas fa-${stat.icon} text-${stat.color}-600 text-lg`}></i>
+                <div key={stat.key} className={`stat-card stat-${stat.color}`}>
+                  <div className="stat-icon">
+                    <i className={`fas fa-${stat.icon}`}></i>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="text-sm text-gray-600">{stat.label}</p>
+                    <p className="stat-value">{stat.value}</p>
+                    <p className="stat-label">{stat.label}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Vue semaine - Partie droite */}
-        <div className="w-full lg:w-4/12 px-4">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 h-full">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Vue rapide</h3>
-              <div className="flex items-center gap-1">
+          {/* Calendrier */}
+          <div className="rdv-card">
+            <div className="calendar-header">
+              <h3 style={{ margin: 0, color: "#1e293b" }}>Vue rapide</h3>
+              <div className="calendar-controls">
                 <button
-                  onClick={() => setSelectedWeek(new Date(selectedWeek.setDate(selectedWeek.getDate() - 7)))}
-                  className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
-                  title="Semaine précédente"
+                  onClick={() =>
+                    setSelectedWeek(
+                      new Date(selectedWeek.setDate(selectedWeek.getDate() - 7))
+                    )
+                  }
+                  className="calendar-btn"
                 >
-                  <i className="fas fa-chevron-left text-gray-600 text-sm"></i>
+                  <i className="fas fa-chevron-left"></i>
                 </button>
                 <button
                   onClick={() => setSelectedWeek(new Date())}
-                  className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100 transition-colors duration-200"
+                  className="calendar-today"
                 >
                   Auj.
                 </button>
                 <button
-                  onClick={() => setSelectedWeek(new Date(selectedWeek.setDate(selectedWeek.getDate() + 7)))}
-                  className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
-                  title="Semaine suivante"
+                  onClick={() =>
+                    setSelectedWeek(
+                      new Date(selectedWeek.setDate(selectedWeek.getDate() + 7))
+                    )
+                  }
+                  className="calendar-btn"
                 >
-                  <i className="fas fa-chevron-right text-gray-600 text-sm"></i>
+                  <i className="fas fa-chevron-right"></i>
                 </button>
               </div>
             </div>
 
-            {/* Mini calendrier semaine */}
-            <div className="space-y-2">
+            <div className="week-calendar">
               {weekDates.map((date, index) => {
-                const dayRendezVous = rendezVous.filter(rv => 
-                  new Date(rv.date).toDateString() === date.toDateString()
+                const dayRendezVous = rendezVous.filter(
+                  (rv) =>
+                    new Date(rv.date).toDateString() === date.toDateString()
                 );
-                
+
                 return (
-                  <div key={index} className={`flex items-center justify-between p-2 rounded-lg border transition-colors duration-200 ${
-                    date.toDateString() === new Date().toDateString() 
-                      ? "border-blue-300 bg-blue-50" 
-                      : "border-gray-200 bg-gray-50"
-                  }`}>
-                    <div className="flex items-center">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${
-                        date.toDateString() === new Date().toDateString() 
-                          ? "bg-blue-100 text-blue-700" 
-                          : "bg-gray-100 text-gray-700"
-                      }`}>
-                        <span className="text-sm font-medium">{date.getDate()}</span>
+                  <div
+                    key={index}
+                    className={`day-item ${
+                      date.toDateString() === new Date().toDateString()
+                        ? "day-current"
+                        : ""
+                    }`}
+                  >
+                    <div className="day-header">
+                      <div
+                        className={`day-number ${
+                          date.toDateString() === new Date().toDateString()
+                            ? "day-number-current"
+                            : ""
+                        }`}
+                      >
+                        <span>{date.getDate()}</span>
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-gray-800">
-                          {date.toLocaleDateString('fr-FR', { weekday: 'short' })}
+                        <div className="day-name">
+                          {date.toLocaleDateString("fr-FR", {
+                            weekday: "short",
+                          })}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="day-count">
                           {dayRendezVous.length} RDV
                         </div>
                       </div>
                     </div>
-                    
+
                     {dayRendezVous.length > 0 && (
-                      <div className="flex space-x-1">
+                      <div className="day-indicators">
                         {dayRendezVous.slice(0, 2).map((rv, rvIndex) => (
-                          <div key={rvIndex} className={`w-2 h-2 rounded-full ${
-                            rv.type === "Urgence" ? "bg-red-400" :
-                            rv.statut === "Confirmé" ? "bg-green-400" :
-                            "bg-yellow-400"
-                          }`}></div>
+                          <div
+                            key={rvIndex}
+                            className={`indicator ${
+                              rv.type === "Urgence"
+                                ? "indicator-urgent"
+                                : rv.statut === "Confirmé"
+                                ? "indicator-confirmed"
+                                : "indicator-pending"
+                            }`}
+                          ></div>
                         ))}
                         {dayRendezVous.length > 2 && (
-                          <span className="text-xs text-gray-400">+{dayRendezVous.length - 2}</span>
+                          <span className="indicator-more">
+                            +{dayRendezVous.length - 2}
+                          </span>
                         )}
                       </div>
                     )}
@@ -224,56 +337,58 @@ export default function RendezVous() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Recherche et filtres */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
-        <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
-          <div className="flex-grow relative">
-            <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Rechercher un patient, type de consultation..."
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors duration-200"
-            />
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            {[
-              { key: "all", label: "Tous", icon: "list" },
-              { key: "confirmed", label: "Confirmés", icon: "check-circle" },
-              { key: "pending", label: "En attente", icon: "clock" },
-              { key: "urgent", label: "Urgences", icon: "exclamation-triangle" },
-              { key: "today", label: "Aujourd'hui", icon: "calendar-day" }
-            ].map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => setActiveFilter(filter.key)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
-                  activeFilter === filter.key
-                    ? "bg-purple-100 text-purple-700 border border-purple-200"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
-                }`}
-              >
-                <i className={`fas fa-${filter.icon} text-xs`}></i>
-                {filter.label}
-              </button>
-            ))}
+        {/* Filtres */}
+        <div className="rdv-card" style={{ marginBottom: "25px" }}>
+          <div className="filters-content">
+            <div className="search-container">
+              <i className="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Rechercher un patient, type de consultation..."
+                className="search-input"
+              />
+            </div>
+
+            <div className="filter-buttons">
+              {[
+                { key: "all", label: "Tous", icon: "list" },
+                { key: "confirmed", label: "Confirmés", icon: "check-circle" },
+                { key: "pending", label: "En attente", icon: "clock" },
+                {
+                  key: "urgent",
+                  label: "Urgences",
+                  icon: "exclamation-triangle",
+                },
+                { key: "today", label: "Aujourd'hui", icon: "calendar-day" },
+              ].map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => setActiveFilter(filter.key)}
+                  className={`filter-btn ${
+                    activeFilter === filter.key ? "filter-btn-active" : ""
+                  }`}
+                >
+                  <i className={`fas fa-${filter.icon}`}></i>
+                  {filter.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Tableau des rendez-vous */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <CardTableRendezVous 
-          color="light" 
-          searchTerm={searchTerm} 
-          rendezVous={filteredRendezVous}
-          onEditRendezVous={handleEditRendezVous}
-          onDeleteRendezVous={handleDeleteRendezVous}
-        />
+        {/* Tableau */}
+        
+        <div className="rdv-card">
+          <CardTableRendezVous
+            rendezVous={filteredRendezVous}
+            onEditRendezVous={handleEditRendezVous}
+            onDeleteRendezVous={handleDeleteRendezVous}
+            onViewDossier={handleViewDossier} 
+          />
+        </div>
       </div>
     </>
   );

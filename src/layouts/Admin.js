@@ -18,7 +18,9 @@ import PredictionDiabete from "views/admin/PredictionDiabete";
 import Rendez from "views/admin/RendezVous.js";
 import AjouterRendezVous from "views/admin/AjouterRendezVous.js";
 import ModifierRendezVous from "views/admin/ModifierRendezVous.js";
-
+import AjouterPatient from "views/admin/AjouterPatient.js";
+import DiabetesDashboard from 'views/admin/DiabetesDashboard.js';
+import VoirDossier from "views/admin/VoirDossier.js";
 
 export default function Admin() {
   const location = useLocation();
@@ -48,7 +50,10 @@ export default function Admin() {
 
             <Route path="/admin/RendezVous" exact component={Rendez} />
             <Route path="/admin/AjouterRendezVous" exact component={AjouterRendezVous} />
-            <Route path="/admin/modifierrendezvous/:id" element={<ModifierRendezVous />} />
+            <Route path="/admin/modifierrendezvous/:id" component={ModifierRendezVous} />
+            <Route path="/admin/ajouter-patient" component={AjouterPatient} />
+            <Route path="/admin/diabetesdashboard" component={DiabetesDashboard} />
+            <Route path="/admin/voirdossier/:patientId" component={VoirDossier} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
           <FooterAdmin />

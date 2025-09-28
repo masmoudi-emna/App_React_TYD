@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-
-// components
+import { useHistory } from "react-router-dom"; // Ajoutez cette importation
 import CardTable from "components/Cards/CardTable.js";
 
 export default function Patients() {
   const [searchTerm, setSearchTerm] = useState("");
+  const history = useHistory(); // Ajoutez cette ligne
+  
   const [patients, setPatients] = useState([
-    // Données d'exemple
     {
       id: 1,
       nom: "Dupont",
@@ -28,9 +28,7 @@ export default function Patients() {
   ]);
 
   const handleAddPatient = () => {
-    // Logique pour ouvrir un modal ou rediriger vers le formulaire d'ajout
     console.log("Ouvrir formulaire d'ajout patient");
-    // Ici vous pouvez implémenter l'ouverture d'un modal ou la navigation
   };
 
   const handleDeletePatient = (patientId) => {
@@ -39,8 +37,80 @@ export default function Patients() {
     }
   };
 
+  // Ajoutez cette fonction pour voir le dossier
+  const handleViewDossier = (patientId) => {
+    history.push(`/admin/VoirDossier/${patientId}`);
+  };
+
+  // Ajoutez cette fonction pour modifier le patient
+  const handleEditPatient = (patientId) => {
+    console.log("Modifier patient:", patientId);
+    // Vous pouvez rediriger vers une page de modification si nécessaire
+    // history.push(`/admin/modifier-patient/${patientId}`);
+  };
+
   return (
     <>
+      {/* Injection CSS pour les nouveaux styles */}
+      <style>
+        {`
+          .btn-dossier {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .btn-dossier:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+          }
+          .btn-modifier {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .btn-modifier:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+          }
+          .btn-supprimer {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .btn-supprimer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+          }
+        `}
+      </style>
+
       {/* En-tête de la page */}
       <div className="flex flex-wrap mb-8 pt-8">
         <div className="w-full px-4">
@@ -53,8 +123,6 @@ export default function Patients() {
                 Gérez votre liste de patients diabétologiques
               </p>
             </div>
-            
-            
           </div>
         </div>
       </div>
@@ -71,12 +139,12 @@ export default function Patients() {
                   </h3>
                 </div>
                 <button
-              onClick={handleAddPatient}
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text- font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center"
-            >
-              <i className="fas fa-plus-circle mr-2"></i>
-              Ajouter un Patient
-            </button>
+                  onClick={handleAddPatient}
+                  className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center"
+                >
+                  <i className="fas fa-plus-circle mr-2"></i>
+                  Ajouter un Patient
+                </button>
               </div>
             </div>
             <div className="p-6">
@@ -130,6 +198,8 @@ export default function Patients() {
             searchTerm={searchTerm} 
             patients={patients}
             onDeletePatient={handleDeletePatient}
+            onViewDossier={handleViewDossier} // Ajoutez cette prop
+            onEditPatient={handleEditPatient} // Ajoutez cette prop
           />
         </div>
       </div>

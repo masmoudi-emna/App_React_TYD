@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom"; // Changement ici
+import { useHistory } from "react-router-dom";
 
 export default function AjouterRendezVous() {
-  const history = useHistory(); // Changement ici
+  const history = useHistory();
   const [formData, setFormData] = useState({
-    patientId: "",
+    patientNom: "",
     date: "",
     heure: "09:00",
-    duree: 30,
     type: "Consultation de suivi",
     statut: "Confirmé",
     notes: ""
@@ -16,7 +15,7 @@ export default function AjouterRendezVous() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Nouveau rendez-vous:", formData);
-    history.push("/admin/rendezvous"); // Changement ici
+    history.push("/admin/rendezvous");
   };
 
   const handleChange = (e) => {
@@ -27,134 +26,294 @@ export default function AjouterRendezVous() {
   };
 
   return (
-    <div className="px-4 md:px-10 mx-auto w-full -m-24">
-      <div className="flex flex-wrap">
-        <div className="w-full px-4">
-          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
-            <div className="rounded-t mb-0 px-6 py-6">
-              <div className="text-center flex justify-between items-center">
+    <>
+      <style>
+        {`
+          .form-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 40px;
+          }
+          .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid #cbd5e1;
+            margin-bottom: 20px;
+          }
+          .form-section {
+            margin-bottom: 24px;
+          }
+          .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+          }
+          .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+          }
+          .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+          }
+          .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+          }
+          .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+          }
+          .btn-secondary {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+          .btn-secondary:hover {
+            background: #4b5563;
+            transform: translateY(-1px);
+          }
+          .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+          }
+          .full-width {
+            grid-column: 1 / -1;
+          }
+          
+          @media (max-width: 768px) {
+            .grid-2 {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}
+      </style>
+
+      <div className="form-container">
+        <div className="form-card" style={{padding: '24px'}}>
+          {/* En-tête */}
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px'}}>
+            <div>
+              <button 
+                onClick={() => history.goBack()}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: '#64748b',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginBottom: '12px',
+                  padding: '8px 0'
+                }}
+              >
+                <i className="fas fa-arrow-left" style={{marginRight: '8px'}}></i>
+                Retour
+              </button>
+              <h1 style={{fontSize: '2rem', fontWeight: 'bold', color: '#1e293b', margin: 0}}>
+                Nouveau Rendez-vous
+              </h1>
+              <p style={{color: '#64748b', marginTop: '8px', margin: 0}}>
+                Planifiez un nouveau rendez-vous avec un patient
+              </p>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            {/* Informations du rendez-vous */}
+            <div className="form-section">
+              <h2 className="section-title">Informations du Rendez-vous</h2>
+              <div className="grid-2">
+                {/* Nom du patient */}
+                <div className="full-width">
+                  <label className="form-label">Nom du patient *</label>
+                  <input
+                    type="text"
+                    name="patientNom"
+                    value={formData.patientNom}
+                    onChange={handleChange}
+                    className="form-input"
+                    placeholder="Entrez le nom complet du patient"
+                    required
+                  />
+                </div>
+                
+                {/* Date */}
                 <div>
-                  <h1 className="text-3xl font-bold text-blueGray-700">
-                    Nouveau Rendez-vous
-                  </h1>
+                  <label className="form-label">Date *</label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                  />
+                </div>
+                
+                {/* Heure */}
+                <div>
+                  <label className="form-label">Heure *</label>
+                  <input
+                    type="time"
+                    name="heure"
+                    value={formData.heure}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                  />
+                </div>
+                
+                {/* Type de rendez-vous */}
+                <div>
+                  <label className="form-label">Type de rendez-vous *</label>
+                  <select
+                    name="type"
+                    value={formData.type}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                  >
+                    <option value="Consultation de suivi">Consultation de suivi</option>
+                    <option value="Nouvelle consultation">Nouvelle consultation</option>
+                    <option value="Urgence">Urgence</option>
+                    <option value="Éducation thérapeutique">Éducation thérapeutique</option>
+                    <option value="Bilan trimestriel">Bilan trimestriel</option>
+                    <option value="Contrôle glycémique">Contrôle glycémique</option>
+                  </select>
+                </div>
+                
+                {/* Statut */}
+                <div>
+                  <label className="form-label">Statut *</label>
+                  <select
+                    name="statut"
+                    value={formData.statut}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                  >
+                    <option value="Confirmé">Confirmé</option>
+                    <option value="En attente">En attente</option>
+                    <option value="Annulé">Annulé</option>
+                    <option value="Reporté">Reporté</option>
+                  </select>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Date *
-                    </label>
-                    <input
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Heure *
-                    </label>
-                    <input
-                      type="time"
-                      name="heure"
-                      value={formData.heure}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Durée (minutes) *
-                    </label>
-                    <select
-                      name="duree"
-                      value={formData.duree}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                    >
-                      <option value="30">30 minutes</option>
-                      <option value="45">45 minutes</option>
-                      <option value="60">60 minutes</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Type de rendez-vous *
-                    </label>
-                    <select
-                      name="type"
-                      value={formData.type}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                    >
-                      <option value="Consultation de suivi">Consultation de suivi</option>
-                      <option value="Nouvelle consultation">Nouvelle consultation</option>
-                      <option value="Urgence">Urgence</option>
-                      <option value="Éducation thérapeutique">Éducation thérapeutique</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Statut *
-                    </label>
-                    <select
-                      name="statut"
-                      value={formData.statut}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                    >
-                      <option value="Confirmé">Confirmé</option>
-                      <option value="En attente">En attente</option>
-                    </select>
-                  </div>
-                  
-                  <div className="md:col-span-2">
-                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
-                      Notes
-                    </label>
-                    <textarea
-                      name="notes"
-                      value={formData.notes}
-                      onChange={handleChange}
-                      rows="3"
-                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                      placeholder="Notes supplémentaires..."
-                    />
-                  </div>
-                </div>
-                
-                <div className="mt-8 flex justify-end space-x-4">
-                  <button
-                    type="button"
-                    onClick={() => history.push("/admin/rendezvous")}
-                    className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
-                  >
-                    Annuler
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
-                  >
-                    <i className="fas fa-calendar-plus mr-2"></i>
-                    Créer le Rendez-vous
-                  </button>
-                </div>
-              </form>
+
+            {/* Notes supplémentaires */}
+            <div className="form-section">
+              <h2 className="section-title">Informations Complémentaires</h2>
+              <div>
+                <label className="form-label">Notes et observations</label>
+                <textarea
+                  name="notes"
+                  value={formData.notes}
+                  onChange={handleChange}
+                  rows="4"
+                  className="form-input"
+                  placeholder="Notes supplémentaires (symptômes, antécédents, motif de consultation, etc.)"
+                  style={{resize: 'vertical'}}
+                />
+                <small style={{color: '#6b7280', marginTop: '4px', display: 'block'}}>
+                  Ces informations aideront à préparer la consultation
+                </small>
+              </div>
             </div>
-          </div>
+
+            {/* Résumé rapide */}
+            {formData.patientNom && formData.date && (
+              <div className="form-section">
+                <h2 className="section-title">Résumé du Rendez-vous</h2>
+                <div style={{
+                  background: '#f0f9ff',
+                  border: '1px solid #bae6fd',
+                  borderRadius: '12px',
+                  padding: '16px'
+                }}>
+                  <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px'}}>
+                    <div>
+                      <strong style={{color: '#0369a1'}}>Patient:</strong>
+                      <p style={{margin: '4px 0 0 0', color: '#1e293b'}}>{formData.patientNom}</p>
+                    </div>
+                    <div>
+                      <strong style={{color: '#0369a1'}}>Date et heure:</strong>
+                      <p style={{margin: '4px 0 0 0', color: '#1e293b'}}>
+                        {formData.date && new Date(formData.date).toLocaleDateString('fr-FR')} à {formData.heure}
+                      </p>
+                    </div>
+                    <div>
+                      <strong style={{color: '#0369a1'}}>Type:</strong>
+                      <p style={{margin: '4px 0 0 0', color: '#1e293b'}}>{formData.type}</p>
+                    </div>
+                    <div>
+                      <strong style={{color: '#0369a1'}}>Statut:</strong>
+                      <p style={{margin: '4px 0 0 0', color: '#1e293b'}}>{formData.statut}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Boutons d'action */}
+            <div style={{
+              display: 'flex', 
+              justifyContent: 'flex-end', 
+              gap: '16px', 
+              marginTop: '32px', 
+              paddingTop: '24px', 
+              borderTop: '1px solid #e2e8f0'
+            }}>
+              <button
+                type="button"
+                onClick={() => history.push("/admin/rendezvous")}
+                className="btn-secondary"
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                className="btn-primary"
+              >
+                <i className="fas fa-calendar-plus"></i>
+                Créer le Rendez-vous
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }

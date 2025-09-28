@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom"; // Changement ici
+import { useParams, useHistory } from "react-router-dom";
 
 export default function ModifierRendezVous() {
   const { id } = useParams();
-  const history = useHistory(); // Changement ici
+  const history = useHistory();
   const [rendezVous, setRendezVous] = useState({
+    patientNom: "", // J'ajoute le nom du patient manquant
     date: "",
     heure: "09:00",
     duree: 30,
@@ -14,8 +15,9 @@ export default function ModifierRendezVous() {
   });
 
   useEffect(() => {
-    // Simulation de données
+    // Simulation de données avec des valeurs par défaut
     const rendezVousData = {
+      patientNom: "Jean Dupont", // Exemple de nom
       date: "2024-01-22",
       heure: "09:00",
       duree: 30,
@@ -29,7 +31,7 @@ export default function ModifierRendezVous() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Rendez-vous modifié:", rendezVous);
-    history.push("/admin/rendezvous"); // Changement ici
+    history.push("/admin/rendezvous");
   };
 
   const handleChange = (e) => {
@@ -40,7 +42,7 @@ export default function ModifierRendezVous() {
   };
 
   return (
-    <div className="px-4 md:px-10 mx-auto w-full -m-24">
+    <div className="px-4 md:px-10 mx-auto w-full -m-24 mt-8"> {/* Ajout de mt-8 ici */}
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
@@ -59,6 +61,22 @@ export default function ModifierRendezVous() {
             <div className="px-6 py-4">
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Ajout du champ Nom du patient */}
+                  <div className="md:col-span-2">
+                    <label className="block text-blueGray-600 text-sm font-bold mb-2">
+                      Nom du patient *
+                    </label>
+                    <input
+                      type="text"
+                      name="patientNom"
+                      value={rendezVous.patientNom}
+                      onChange={handleChange}
+                      className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      placeholder="Entrez le nom du patient"
+                      required
+                    />
+                  </div>
+                  
                   <div>
                     <label className="block text-blueGray-600 text-sm font-bold mb-2">
                       Date *

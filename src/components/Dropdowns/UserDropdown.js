@@ -20,28 +20,29 @@ const UserDropdown = () => {
   return (
     <>
       <a
-        className="text-blueGray-500 block hover:text-blue-600 transition-colors duration-200"
-        href="#pablo"
-        ref={btnDropdownRef}
-        onClick={(e) => {
-          e.preventDefault();
-          dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }}
-      >
-        <div className="items-center flex">
-          <span className="w-12 h-12 text-sm text-white bg-blue-100 inline-flex items-center justify-center rounded-full border-2 border-blue-300 shadow-md">
-            <img
-              alt="Profil médecin"
-              className="w-full rounded-full align-middle border-none"
-              src={require("assets/img/deuxm.jpg").default}
-            />
-          </span>
-          <div className="ml-3 hidden md:block">
-            <p className="text-sm font-semibold text-blueGray-700">Dr. Martin</p>
-            <p className="text-xs text-blueGray-500">Diabétologue</p>
-          </div>
-        </div>
-      </a>
+  className="text-blueGray-500 block hover:text-blue-600 transition-colors duration-200"
+  href="#pablo"
+  ref={btnDropdownRef}
+  onClick={(e) => {
+    e.preventDefault();
+    dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
+  }}
+>
+  <div className="items-center flex">
+    {/* Conteneur circulaire avec overflow-hidden pour garantir la circularité */}
+    <span className="w-12 h-12 text-sm text-white bg-blue-100 inline-flex items-center justify-center rounded-full border-2 border-blue-300 shadow-md overflow-hidden">
+      <img
+        alt="Profil médecin"
+        className="w-full h-full object-cover" // object-cover pour remplir le cercle sans déformation
+        src={require("assets/img/deuxm.jpg").default}
+      />
+    </span>
+    <div className="ml-3 hidden md:block">
+      <p className="text-sm font-semibold text-blueGray-700">Dr. Martin</p>
+      <p className="text-xs text-blueGray-500">Diabétologue</p>
+    </div>
+  </div>
+</a>
       
       <div
         ref={popoverDropdownRef}
