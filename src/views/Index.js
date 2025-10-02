@@ -10,120 +10,126 @@ export default function Index() {
   return (
     <>
       <IndexNavbar fixed />
-      
-     <section className="header relative flex items-center justify-center min-h-screen max-h-860-px overflow-hidden">
-  <div className="container mx-auto px-4 flex flex-wrap items-center justify-center">
-    <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4 order-2 md:order-1 flex flex-col justify-center">
-      <div className="text-center md:text-left pt-10 md:pt-0">
-        <h2 className="font-semibold text-3xl sm:text-4xl text-blueGray-600">
-          Votre santé, notre priorité!
-          <span className="block w-20 h-1 bg-lightBlue-500 my-4 mx-auto md:mx-0"></span>
-          <span className="block">Médecin Diabétologue spécialisé</span>
-        </h2>
-        <p className="mt-4 text-base sm:text-lg leading-relaxed text-blueGray-500 max-w-md mx-auto md:mx-0">
-          Prenez le contrôle de votre diabète avec un accompagnement personnalisé
-        </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus?ref=nr-index"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="get-started text-white font-bold px-5 py-3 rounded-xl border-2 border-lightBlue-600 outline-none focus:outline-none bg-lightBlue-500 hover:bg-lightBlue-600 active:bg-lightBlue-700 uppercase text-sm shadow-md hover:shadow-lg transition-all duration-150 text-center"
-          >
-            📅 Prendre rendez-vous en ligne
-          </a>
-          <a
-            href="https://github.com/creativetimofficial/notus-react?ref=nr-index"
-            className="github-star text-white font-bold px-5 py-3 rounded-xl border-2 border-blueGray-800 outline-none focus:outline-none bg-blueGray-700 hover:bg-blueGray-800 active:bg-blueGray-900 uppercase text-sm shadow-md hover:shadow-lg transition-all duration-150 text-center"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🚨 Urgences diabétiques
-          </a>
+
+      <section className="header relative flex items-center justify-center min-h-screen max-h-900-px overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="container mx-auto px-4 flex flex-wrap items-center justify-center">
+          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4 order-2 md:order-1 flex flex-col justify-center">
+            <div className="text-center md:text-left pt-10 md:pt-0">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl text-gray-800 leading-tight">
+                Votre santé,
+                <span className="block bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+                  notre priorité !
+                </span>
+                <div className="w-24 h-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full my-6 mx-auto md:mx-0"></div>
+                <span className="block text-xl sm:text-2xl text-gray-600 font-semibold mt-4">
+                  Médecin Diabétologue spécialisé
+                </span>
+              </h1>
+
+              <p className="mt-6 text-lg sm:text-xl leading-relaxed text-gray-600 max-w-lg mx-auto md:mx-0 font-medium">
+                Prenez le contrôle de votre diabète avec un accompagnement
+                <span className="text-blue-600 font-semibold">
+                  {" "}
+                  personnalisé et moderne
+                </span>
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a
+                  href="/rendez-vous"
+                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-black font-bold px-8 py-4 rounded-2xl uppercase text-base transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 animate-pulse"
+                >
+                  <span className="flex items-center justify-center">
+                    📅 Prendre rendez-vous en ligne
+                  </span>
+                </a>
+                <a
+                  href="/urgences"
+                  className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-black font-bold px-8 py-4 rounded-2xl uppercase text-base transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <span className="flex items-center justify-center">
+                    🚨 Urgences diabétiques
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full md:w-4/12 lg:w-6/12 xl:w-6/12 px-4 order-1 md:order-2 flex items-center justify-center mb-8 md:mb-0">
+            <div className="relative">
+              <div className="absolute -inset-6 bg-gradient-to-r from-blue-400 to-green-400 rounded-3xl opacity-20 blur-2xl"></div>
+              <img
+                className="relative w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl rounded-3xl shadow-2xl z-10 border-8 border-white"
+                src={require("assets/img/medecinfour.jpg").default}
+                alt="Médecin diabétologue"
+                style={{
+                  height: "600px",
+                  width: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div className="w-full md:w-4/12 lg:w-6/12 xl:w-6/12 px-4 order-1 md:order-2 flex items-center justify-center mb-6 md:mb-0">
-      <div className="relative flex justify-center">
-        <img
-          className="w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl rounded-2xl shadow-xl"
-          src={require("assets/img/medecinfour.jpg").default}
-          alt="Médecin diabétologue"
+      <section className="relative -mb-24 z-20  ">
+        <div className="container mx-auto px-4">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8 md:p-10 transform hover:-translate-y-1 transition-all duration-300">
+            <div className="relative text-center px-6 z-10">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-black leading-tight drop-shadow-lg">
+                <i class="fas fa-search-plus text-blue-400 text-2xl"></i>
+                Predire ton Diabète
+              </h1>
+
+              {/* Ligne décorative */}
+              <div className="w-20 h-1 bg-white/80 mx-auto my-4 rounded-full"></div>
+
+              <button className="bg-black text-white hover:bg-green-50  py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
+                Maintenant tu peux savoir votre risque de diabète avec notre
+                outil de prédiction avancé...
+              </button>
+
+              {/* Bouton moderne avec effet de profondeur */}
+              <button className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm md:text-base group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+              </button>
+            </div>
+
+            {/* Élément décoratif */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/5 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen1">
+        {/* Image de fond avec overlay */}
+        <div
+          className="absolute top-0 w-full h-full bg-center bg-cover"
           style={{
-            maxHeight: "500px",
-            objectFit: "cover"
+            backgroundImage: `url(${
+              require("assets/img/predire.jpg").default
+            })`,
           }}
-        />
-      </div>
-    </div>
-  </div>
-</section>
+        >
+          {/* Overlay avec opacité */}
 
-<section className="relative -mb-24 z-20  ">
-  <div className="container mx-auto px-4">
-    <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8 md:p-10 transform hover:-translate-y-1 transition-all duration-300">
-      <div className="relative text-center px-6 z-10">
-        
-        <h1 className="text-3xl md:text-4xl font-extrabold text-black leading-tight drop-shadow-lg">
-          <i class="fas fa-search-plus text-blue-400 text-2xl"></i> 
-          Predire ton Diabète
-        </h1>
-        
-        {/* Ligne décorative */}
-        <div className="w-20 h-1 bg-white/80 mx-auto my-4 rounded-full"></div>
-        
-       
-        <button className="bg-black text-white hover:bg-green-50  py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
-          Maintenant tu peux savoir votre risque de diabète avec notre outil de prédiction avancé...
+          <span className="absolute top-0 w-full h-full bg-blueGray-800 opacity-50"></span>
+        </div>
+        {/* Contenu du cercle */}
+        <div className="relative text-center px-6 z-10">
+          {/* Ligne décorative */}
+          <div className="w-16 h-1 bg-white/80 mx-auto my-3 rounded-full"></div>
 
-        </button>
-        
-        {/* Bouton moderne avec effet de profondeur */}
-        <button className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm md:text-base group relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
-        </button>
-        
-      </div>
-      
-      {/* Élément décoratif */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
-      <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-white/5 rounded-full"></div>
-      
-    </div>
-  </div>
-  
-</section>
-
-
-<section className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen1">
-  
-      {/* Image de fond avec overlay */}
-      <div className="absolute top-0 w-full h-full bg-center bg-cover"
-           style={{
-             backgroundImage: `url(${require("assets/img/predire.jpg").default})`,
-           }}>
-        {/* Overlay avec opacité */}
-        
-        <span className="absolute top-0 w-full h-full bg-blueGray-800 opacity-50"></span>
-      </div>
-       {/* Contenu du cercle */}
-      <div className="relative text-center px-6 z-10">
-        
-        
-        {/* Ligne décorative */}
-        <div className="w-16 h-1 bg-white/80 mx-auto my-3 rounded-full"></div>
-        
-        {/* Bouton simple */}
-        <button className="bg-white text-green-700 hover:bg-green-50 font-bold py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
-          <i class="fas fa-brain text-indigo-500 text-2xl"></i>
-          Explorer les fonctionnalités et commencer l'analyse! 
-        </button>
-      </div>
-  
-      
-      
-    </section>
+          {/* Bouton simple */}
+          <button className="bg-white text-green-700 hover:bg-green-50 font-bold py-2 px-6 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300  mt-2">
+            <i class="fas fa-brain text-indigo-500 text-2xl"></i>
+            Explorer les fonctionnalités et commencer l'analyse!
+          </button>
+        </div>
+      </section>
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
@@ -468,88 +474,84 @@ export default function Index() {
           </div>
         </div>
 
-
-<div className="container mx-auto px-4 pb-32 pt-48">
-  <div className="items-center flex flex-wrap">
-    <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
-      <div className="md:pr-12">
-        <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-          <i className="fas fa-heartbeat text-xl"></i>
-        </div>
-        <h3 className="text-3xl font-semibold">
-          Suivi Médical Complet
-        </h3>
-        <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-          Notre plateforme vous offre un accompagnement personnalisé pour la gestion 
-          de votre diabète. Accédez à vos données de santé, suivez votre traitement 
-          et restez connecté avec votre équipe médicale en toute simplicité.
-        </p>
-        <ul className="list-none mt-6">
-          <li className="py-2">
-            <div className="flex items-center">
-              <div>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                  <i className="fas fa-lock"></i>
-                </span>
-              </div>
-              <div>
-                <h4 className="text-blueGray-500">
-                  Données Sécurisées et Confidentiales
-                </h4>
+        <div className="container mx-auto px-4 pb-32 pt-48">
+          <div className="items-center flex flex-wrap">
+            <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
+              <div className="md:pr-12">
+                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                  <i className="fas fa-heartbeat text-xl"></i>
+                </div>
+                <h3 className="text-3xl font-semibold">
+                  Suivi Médical Complet
+                </h3>
+                <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
+                  Notre plateforme vous offre un accompagnement personnalisé
+                  pour la gestion de votre diabète. Accédez à vos données de
+                  santé, suivez votre traitement et restez connecté avec votre
+                  équipe médicale en toute simplicité.
+                </p>
+                <ul className="list-none mt-6">
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
+                          <i className="fas fa-lock"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-blueGray-500">
+                          Données Sécurisées et Confidentiales
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
+                          <i className="fas fa-chart-line"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-blueGray-500">
+                          Suivi Personnalisé en Temps Réel
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
+                          <i className="fas fa-mobile-alt"></i>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-blueGray-500">
+                          Accessible sur Tous Vos Appareils
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-          </li>
-          <li className="py-2">
-            <div className="flex items-center">
-              <div>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                  <i className="fas fa-chart-line"></i>
-                </span>
-              </div>
-              <div>
-                <h4 className="text-blueGray-500">
-                  Suivi Personnalisé en Temps Réel
-                </h4>
-              </div>
+
+            <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+              <img
+                alt="Interface de suivi médical"
+                className="max-w-full rounded-lg shadow-xl"
+                style={{
+                  transform:
+                    "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
+                }}
+                src={require("assets/img/videoframe1.png").default}
+              />
             </div>
-          </li>
-          <li className="py-2">
-            <div className="flex items-center">
-              <div>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                  <i className="fas fa-mobile-alt"></i>
-                </span>
-              </div>
-              <div>
-                <h4 className="text-blueGray-500">
-                  Accessible sur Tous Vos Appareils
-                </h4>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
-      <img
-        alt="Interface de suivi médical"
-        className="max-w-full rounded-lg shadow-xl"
-        style={{
-          transform:
-            "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
-        }}
-        src={require("assets/img/videoframe1.png").default}
-      />
-    </div>
-  </div>
-</div>
-
-
-        <div className="container mx-auto">
-        
           </div>
-        
+        </div>
+
+        <div className="container mx-auto"></div>
       </section>
 
       <Footer />
